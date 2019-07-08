@@ -6,12 +6,13 @@ import sys
 from pymispwarninglists import WarningLists
 
 IOCS_FILE = "/data/iocs.txt"
+DOCKER_HUB_REPO = "ilyaglow/misp-warninglists"
 USAGE = """
 Specify observable to search as an argument or mount a file {0} with new line separated observables.
 Examples:
-    docker run -it --rm ilyaglow/mwls 8.8.8.8
-    docker run -it --rm $PWD/iocs.txt:{0} ilyaglow/mwls
-""".format(IOCS_FILE)
+    docker run -it --rm {1} 8.8.8.8
+    docker run -it --rm $PWD/iocs.txt:{0} {1}
+""".format(IOCS_FILE, DOCKER_HUB_REPO)
 
 def lookup(indicator):
     results = wl.search(indicator)
